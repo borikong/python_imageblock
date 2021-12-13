@@ -5,6 +5,9 @@ from pdf2image import convert_from_path
 from PIL import ImageDraw
 from PIL import Image
 
+h=669 #블록 처리를 시작할 세로 위치
+w=72 #펜의 두께
+
 def get_pdf_root():
     root = Tk().withdraw()
     pdf_root = tkinter.filedialog.askopenfilename(initialdir="/", title="PDF 파일 업로드", filetypes={("all files", "*.pdf")})
@@ -43,14 +46,10 @@ def pdf_to_img(pdf_root,save_root):
 
 # pdf_to_img(get_pdf_root(),get_save_root())
 
-h=669
-w=72
-name=['김주현','김채림','민은지','박고은','박선아','안수빈','이가옥','이은혜','이혜수','임예진',"11","12","13","14","15","16","17"]
+name=["name1","name2","name3","name4","name5","name6"]
 # image = Image.open("image.jpg")
 # draw = ImageDraw.Draw(image)
 # draw.line((0, h, image.size[1], h), fill="black", width=w)
-# draw.line((0, h+w*2, image.size[1], h+w*2), fill="black", width=w)
-# draw.line((0, h+w*3, image.size[1], h+w*3), fill="black", width=w)
 # image.save("test.jpg")
 
 for i in range(0,17):
@@ -59,5 +58,5 @@ for i in range(0,17):
     for j in range(0,17):
         if j!=i:
             draw.line((0, h + w * j, image.size[1], h + w * j), fill="black", width=w)
-        filename="이체확인증_"+name[i]+".jpg"
+        filename="filename_"+name[i]+".jpg"
         image.save(filename)
